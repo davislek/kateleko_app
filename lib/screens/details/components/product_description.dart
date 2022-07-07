@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:katale_ko_client/models/Product.dart';
+import 'package:katale_ko_client/demo_models/Product.dart';
 
 import '../../../constants.dart';
 import '../../../size_config.dart';

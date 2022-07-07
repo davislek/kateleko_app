@@ -1,8 +1,11 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:katale_ko_client/components/socal_card.dart';
 import 'package:katale_ko_client/constants.dart';
+import 'package:katale_ko_client/screens/services/auth_service.dart';
 import 'package:katale_ko_client/size_config.dart';
 
+import '../../complete_profile/complete_profile_screen.dart';
 import 'sign_up_form.dart';
 
 class Body extends StatelessWidget {
@@ -31,11 +34,19 @@ class Body extends StatelessWidget {
                   children: [
                     SocalCard(
                       icon: "assets/icons/google-icon.svg",
-                      press: () {},
+                      press: () async{
+                        User? result = await Authentication().googleSignIn(context);
+                        if(result != null){
+                          Navigator.pushNamed(
+                              context, CompleteProfileScreen.routeName);
+                        }
+                      },
                     ),
                     SocalCard(
                       icon: "assets/icons/facebook-2.svg",
-                      press: () {},
+                      press: () {
+
+                      },
                     ),
                     SocalCard(
                       icon: "assets/icons/twitter.svg",

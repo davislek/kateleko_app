@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 class Authentication {
   FirebaseAuth firebaseAuth = FirebaseAuth.instance;
@@ -32,10 +33,9 @@ class Authentication {
   }
 
   Future resetPassword(String Email, context) async {
-    try{
+    try {
       await firebaseAuth.sendPasswordResetEmail(email: Email);
-    }on FirebaseAuthException
-    catch(e){
+    } on FirebaseAuthException catch (e) {
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
         content: Text(e.toString()),
         backgroundColor: Colors.deepOrange,
@@ -43,11 +43,30 @@ class Authentication {
     }
   }
 
-  Future logout(context) async{
-    try{
+  Future logout(context) async {
+    try {
       await firebaseAuth.signOut();
-    }on FirebaseException catch(e)
-    {
+    } on FirebaseException catch (e) {
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        content: Text(e.toString()),
+        backgroundColor: Colors.deepOrange,
+      ));
+    }
+  }
+
+  Future googleSignIn(context) async {
+    try
+    {final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
+    if (googleUser != null) {
+      final GoogleSignInAuthentication googleAuth =
+      await googleUser.authentication;
+      final credentials = GoogleAuthProvider.credential(
+          accessToken: googleAuth.accessToken, idToken: googleAuth.idToken);
+
+      UserCredential userCredential = await firebaseAuth.signInWithCredential(credentials);
+      return userCredential;
+    }
+    }on FirebaseAuthException catch(e){
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
         content: Text(e.toString()),
         backgroundColor: Colors.deepOrange,
@@ -56,4 +75,3 @@ class Authentication {
 
   }
 }
-

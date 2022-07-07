@@ -1,3 +1,4 @@
+import 'dart:io';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:katale_ko_client/components/custom_surfix_icon.dart';
@@ -142,10 +143,14 @@ class _CompleteProfileFormState extends State<CompleteProfileForm> {
           SizedBox(height: getProportionateScreenHeight(40)),
           DefaultButton(
             text: "continue",
-            press: () async {
+            press: (context) async {
               if (_formKey.currentState!.validate()) {
+                var email_key = File('email_key.txt').readAsStringSync();
                 CollectionReference users = firestore.collection('users');
-                await users.add(
+                try
+                {
+                  //creating profile details
+                  await users.doc(email_key).collection("profile").add(
                     {
                       "Address": AddressFormController.text,
                       "Phone": PhoneNumberController.text,
@@ -153,6 +158,39 @@ class _CompleteProfileFormState extends State<CompleteProfileForm> {
                       "First Name": FirstNameController.text
                     }
                 );
+                  //creating user cart
+                  await users.doc(email_key).collection("Cart").doc('data').set(
+                      {});
+
+                  //creating favourites
+                  await users.doc(email_key).collection("Favourites").doc('data').set(
+                      {});
+
+                  //creating Brands
+                  await users.doc(email_key).collection("Cart").doc('data').set(
+                      {});
+
+                  //creating popular products
+                  await users.doc(email_key).collection("PopularProducts").doc('data').set(
+                      {});
+
+                  //creating Phone brands
+                  await users.doc(email_key).collection("Brands").doc("SmartPhone").set(
+                      {});
+
+                  await users.doc(email_key).collection("Brands").doc("Fashion").set(
+                      {});
+
+                }on FirebaseException
+                catch(e)
+                {
+                  ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                    content: Text(e.toString()),
+                    backgroundColor: Colors.deepOrange,
+                    padding: EdgeInsets.all(25),
+                  ));
+                }
+
                 Navigator.pushNamed(context, OtpScreen.routeName);
               }
             },

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:katale_ko_client/screens/home/components/popular_products_header.dart';
 
 import '../../../size_config.dart';
 import 'categories.dart';
@@ -21,7 +22,7 @@ class Body extends StatelessWidget {
             Categories(),
             SpecialOffers(),
             SizedBox(height: getProportionateScreenWidth(30)),
-            PopularProducts(),
+            PopularProductsHeader(),
             SizedBox(height: getProportionateScreenWidth(30)),
           ],
         ),

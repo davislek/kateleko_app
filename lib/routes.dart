@@ -2,6 +2,7 @@ import 'package:flutter/widgets.dart';
 import 'package:katale_ko_client/screens/cart/cart_screen.dart';
 import 'package:katale_ko_client/screens/complete_profile/complete_profile_screen.dart';
 import 'package:katale_ko_client/screens/details/details_screen.dart';
+import 'package:katale_ko_client/screens/favourite/favourite_screen.dart';
 import 'package:katale_ko_client/screens/forgot_password/forgot_password_screen.dart';
 import 'package:katale_ko_client/screens/home/home_screen.dart';
 import 'package:katale_ko_client/screens/login_success/login_success_screen.dart';
@@ -26,4 +27,5 @@ final Map<String, WidgetBuilder> routes = {
   DetailsScreen.routeName: (context) => DetailsScreen(),
   CartScreen.routeName: (context) => CartScreen(),
   ProfileScreen.routeName: (context) => ProfileScreen(),
+  FavouriteScreen.routeName: (context) => FavouriteScreen(),
 };

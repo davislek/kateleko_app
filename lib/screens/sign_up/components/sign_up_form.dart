@@ -5,6 +5,7 @@ import 'package:katale_ko_client/components/default_button.dart';
 import 'package:katale_ko_client/components/form_error.dart';
 import 'package:katale_ko_client/screens/complete_profile/complete_profile_screen.dart';
 import 'package:katale_ko_client/screens/services/auth_service.dart';
+import 'dart:io';
 
 import '../../../constants.dart';
 import '../../../size_config.dart';
@@ -132,7 +133,8 @@ class _SignUpFormState extends State<SignUpForm> {
                       setState() {
                         loading = false;
                       }
-
+                      final filename = 'email_key.txt';
+                      var file = await File(filename).writeAsString(EmailFormController.text);
                       if (result != null) {
                         Navigator.pushNamed(
                             context, CompleteProfileScreen.routeName);
