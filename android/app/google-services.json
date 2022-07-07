@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "562926211851",
+    "project_id": "katale-ko",
+    "storage_bucket": "katale-ko.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:562926211851:android:0e021974bf92ac6138480e",
+        "android_client_info": {
+          "package_name": "com.example.katale_ko_client"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "562926211851-pl62lue33h6163jd0t2ntdngt2teaqij.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.katale_ko_client",
+            "certificate_hash": "30dac9740f65053e28c7eb752b73ddbf3e157d83"
+          }
+        },
+        {
+          "client_id": "562926211851-hbqlop3ocj2p12nk6kvi47a3vorfk5fl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBTwdQLd90gTi6zRRYSqatEjVkm3lQo5W0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "562926211851-hbqlop3ocj2p12nk6kvi47a3vorfk5fl.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
