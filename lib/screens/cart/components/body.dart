@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:katale_ko_client/models/Cart.dart';
-import 'package:katale_ko_client/screens/services/Firestore.dart';
+import 'package:katale_ko_client/models/cart.dart';
+import 'package:katale_ko_client/services/Firestore.dart';
 import 'package:provider/provider.dart';
 
 import '../../../size_config.dart';
@@ -19,7 +19,8 @@ class _BodyState extends State<Body> {
   @override
   void initState(){
     super.initState();
-    carts = FireStoreService.getCart(Provider.of<ApplicationState>(context, listen: false).user) as Future<List<Cart>>?;
+    carts = FireStoreService.getCart(Provider.of<ApplicationState>(
+        context, listen: false).user);
   }
 
   @override
@@ -27,8 +28,10 @@ class _BodyState extends State<Body> {
     return FutureBuilder<List<Cart>>(
       future: carts,
       builder: (context, AsyncSnapshot<List<Cart>> snapshot) {
+        print("called");
         if (snapshot.hasData && snapshot.data != null &&
             snapshot.data!.isNotEmpty) {
+          print("data is there");
           return Padding(
             padding:
             EdgeInsets.symmetric(horizontal: getProportionateScreenWidth(20)),
@@ -38,12 +41,10 @@ class _BodyState extends State<Body> {
                   Padding(
                     padding: EdgeInsets.symmetric(vertical: 10),
                     child: Dismissible(
-                      key: Key(demoCarts[index].product.id.toString()),
+                      key: Key(snapshot.data![index].id),
                       direction: DismissDirection.endToStart,
                       onDismissed: (direction) {
-                        setState(() {
-                          demoCarts.removeAt(index);
-                        });
+                        setState(() {});
                       },
                       background: Container(
                         padding: EdgeInsets.symmetric(horizontal: 20),
@@ -64,6 +65,17 @@ class _BodyState extends State<Body> {
             ),
           );
         }
+        else if(snapshot.data!=null && snapshot.data!.isEmpty){
+          print("data == null");
+          return const Center(
+            child:Icon(
+              Icons.add_shopping_cart_sharp,
+              color:Colors.yellow,
+              size:90
+            )
+          );
+        }
+        return Center(child:CircularProgressIndicator());
       },
     );
   }

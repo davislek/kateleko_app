@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:katale_ko_client/models/Cart.dart';
-
 import 'components/body.dart';
+import '../../services/Firestore.dart';
 import 'components/check_out_card.dart';
 
 class CartScreen extends StatelessWidget {
@@ -23,10 +22,10 @@ class CartScreen extends StatelessWidget {
             "Your Cart",
             style: TextStyle(color: Colors.black),
           ),
-          Text(
-            "${demoCarts.length} items",
-            style: Theme.of(context).textTheme.caption,
-          ),
+          //Text(
+          //  "${FireStoreService.getCartNumber().toString()} items",
+          //  style: Theme.of(context).textTheme.caption,
+          //),
         ],
       ),
     );

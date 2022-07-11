@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:katale_ko_client/components/rounded_icon_btn.dart';
-import 'package:katale_ko_client/models/Product.dart';
+import 'package:katale_ko_client/models/product.dart';
 
 import '../../../constants.dart';
 import '../../../size_config.dart';
@@ -23,9 +23,11 @@ class ColorDots extends StatelessWidget {
       child: Row(
         children: [
           ...List.generate(
-            product.colors.length,
+            //product.colors.length,
+            4,
             (index) => ColorDot(
-              color: product.colors[index],
+              //color: product.colors[index],
+              color:Colors.pinkAccent,
               isSelected: index == selectedColor,
             ),
           ),

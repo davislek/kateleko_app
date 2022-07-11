@@ -2,7 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:katale_ko_client/components/socal_card.dart';
 import 'package:katale_ko_client/constants.dart';
-import 'package:katale_ko_client/screens/services/auth_service.dart';
+import 'package:katale_ko_client/services/auth_service.dart';
 import 'package:katale_ko_client/size_config.dart';
 
 import '../../complete_profile/complete_profile_screen.dart';
@@ -42,16 +42,16 @@ class Body extends StatelessWidget {
                         }
                       },
                     ),
-                    SocalCard(
-                      icon: "assets/icons/facebook-2.svg",
-                      press: () {
+                    //SocalCard(
+                      //icon: "assets/icons/facebook-2.svg",
+                      //press: () {
 
-                      },
-                    ),
-                    SocalCard(
-                      icon: "assets/icons/twitter.svg",
-                      press: () {},
-                    ),
+                     // },
+                    //),
+                    //SocalCard(
+                      //icon: "assets/icons/twitter.svg",
+                     // press: () {},
+                   // ),
                   ],
                 ),
                 SizedBox(height: getProportionateScreenHeight(20)),

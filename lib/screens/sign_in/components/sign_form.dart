@@ -5,7 +5,7 @@ import 'package:katale_ko_client/components/form_error.dart';
 import 'package:katale_ko_client/helper/keyboard.dart';
 import 'package:katale_ko_client/screens/forgot_password/forgot_password_screen.dart';
 import 'package:katale_ko_client/screens/login_success/login_success_screen.dart';
-import 'package:katale_ko_client/screens/services/auth_service.dart';
+import 'package:katale_ko_client/services/auth_service.dart';
 
 import '../../../components/default_button.dart';
 import '../../../constants.dart';
@@ -111,18 +111,19 @@ class _SignFormState extends State<SignForm> {
           ),
           SizedBox(height: getProportionateScreenHeight(30)),
           Row(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Checkbox(
-                value: remember,
-                activeColor: kPrimaryColor,
-                onChanged: (value) {
-                  setState(() {
-                    remember = value;
-                  });
-                },
-              ),
-              Text("Remember me"),
-              Spacer(),
+              //Checkbox(
+               // value: remember,
+                //activeColor: kPrimaryColor,
+                //onChanged: (value) {
+                 // setState(() {
+                  //  remember = value;
+                  //});
+                //},
+              //),
+              //Text("Remember me"),
+              //Spacer(),
               GestureDetector(
                 onTap: () => Navigator.pushNamed(
                     context, ForgotPasswordScreen.routeName),

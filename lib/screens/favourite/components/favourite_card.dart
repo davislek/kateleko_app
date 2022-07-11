@@ -1,16 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:katale_ko_client/demo_models/Favourite.dart';
-
 import '../../../constants.dart';
+import '../../../models/favourite.dart';
 import '../../../size_config.dart';
 
 class FavouriteCard extends StatelessWidget {
   const FavouriteCard({
     Key? key,
-    required this.cart,
+    required this.favourite,
   }) : super(key: key);
 
-  final Favourite cart;
+  final Favourite favourite;
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +25,7 @@ class FavouriteCard extends StatelessWidget {
                 color: Color(0xFFF5F6F9),
                 borderRadius: BorderRadius.circular(15),
               ),
-              child: Image.asset(cart.product.images[0]),
+              child: Image.asset(favourite.images),
             ),
           ),
         ),
@@ -35,19 +34,19 @@ class FavouriteCard extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              cart.product.title,
+              favourite.title,
               style: TextStyle(color: Colors.black, fontSize: 16),
               maxLines: 2,
             ),
             SizedBox(height: 10),
             Text.rich(
               TextSpan(
-                text: "\$${cart.product.price}",
+                text: "\$${favourite.price}",
                 style: TextStyle(
                     fontWeight: FontWeight.w600, color: kPrimaryColor),
                 children: [
                   TextSpan(
-                      text: " x${cart.numOfItem}",
+                      text: " x${favourite.count}",
                       style: Theme.of(context).textTheme.bodyText1),
                 ],
               ),

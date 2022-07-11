@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:katale_ko_client/screens/home/components/popular_product.dart';
 import 'package:katale_ko_client/screens/home/components/section_title.dart';
-
-import '../../../components/product_card.dart';
-import '../../../models/Product.dart';
+//import '../../../components/product_card.dart';
+//import '../../../models/product.dart';
 import '../../../size_config.dart';
 
 class PopularProductsHeader extends StatefulWidget {
@@ -32,23 +31,7 @@ class _PopularProductsHeaderState extends State<PopularProductsHeader> {
               child: SectionTitle(title: '$title', press: () {}),
             ),
             SizedBox(height: getProportionateScreenWidth(20)),
-            SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
-              child: PopularProducts()
-              //  Row(
-              //   children: [
-              //     ...List.generate(
-              //       demoProducts.length,
-              //       (index) {
-              //         if (true) return ProductCard(product: demoProducts[index]);
-              //         return SizedBox
-              //             .shrink(); // here by default width and height is 0
-              //       },
-              //     ),
-              //     SizedBox(width: getProportionateScreenWidth(20)),
-              //   ],
-              // ),
-            )
+            PopularProducts()
           ],
         );;
   }

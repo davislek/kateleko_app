@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:katale_ko_client/demo_models/Product.dart';
+import 'package:katale_ko_client/models/product.dart';
 
 import '../../../constants.dart';
 import '../../../size_config.dart';
@@ -28,7 +28,7 @@ class _ProductImagesState extends State<ProductImages> {
             aspectRatio: 1,
             child: Hero(
               tag: widget.product.id.toString(),
-              child: Image.asset(widget.product.images[selectedImage]),
+              child: Image.asset(widget.product.images),
             ),
           ),
         ),

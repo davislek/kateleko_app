@@ -1,9 +1,7 @@
-import 'dart:html';
-
 import 'package:flutter/material.dart';
 import 'package:katale_ko_client/components/default_button.dart';
-import 'package:katale_ko_client/demo_models/Product.dart';
-import 'package:katale_ko_client/screens/services/Firestore.dart';
+import 'package:katale_ko_client/models/product.dart';
+import 'package:katale_ko_client/services/Firestore.dart';
 import 'package:katale_ko_client/size_config.dart';
 import 'package:katale_ko_client/utils/application_state.dart';
 import 'package:provider/provider.dart';
@@ -29,7 +27,8 @@ class _BodyState extends State<Body> {
     setState((){
       addButtonLoad = true;
     });
-    await FireStoreService.addToCart(Provider.of<ApplicationState>(context, listen: false).user, widget.product.id.toString());
+    await FireStoreService.addToCart(Provider.of<ApplicationState>(context,
+        listen: false).user, widget.product.id.toString());
     setState((){
       addButtonLoad = false;
     });

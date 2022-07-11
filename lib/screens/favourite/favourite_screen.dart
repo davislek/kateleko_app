@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:katale_ko_client/demo_models/Cart.dart';
-
 import '../../components/coustom_bottom_nav_bar.dart';
 import '../../enums.dart';
 import 'components/body.dart';
@@ -31,10 +29,10 @@ class FavouriteScreen extends StatelessWidget {
           ),
           Row(
             children: [
-              Text(
-                "${demoCarts.length} items",
-                style: Theme.of(context).textTheme.caption,
-              ),
+              //Text(
+              //  "${demoCarts.length} items",
+              //  style: Theme.of(context).textTheme.caption,
+              ///),
             ],
           ),
         ],

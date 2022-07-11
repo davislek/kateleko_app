@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../../model/cart.dart';
+import '../../../models/cart.dart';
 
 import '../../../constants.dart';
 import '../../../size_config.dart';
@@ -26,7 +26,7 @@ class CartCard extends StatelessWidget {
                 color: Color(0xFFF5F6F9),
                 borderRadius: BorderRadius.circular(15),
               ),
-              child: Image.asset(cart.images[0]),
+              child: Image.asset(cart.images),
             ),
           ),
         ),

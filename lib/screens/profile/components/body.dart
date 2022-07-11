@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:katale_ko_client/screens/services/auth_service.dart';
+import 'package:katale_ko_client/services/auth_service.dart';
 import 'package:katale_ko_client/screens/sign_in/sign_in_screen.dart';
 
 import 'profile_menu.dart';

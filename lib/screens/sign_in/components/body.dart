@@ -4,7 +4,7 @@ import 'package:katale_ko_client/components/no_account_text.dart';
 import 'package:katale_ko_client/components/socal_card.dart';
 import '../../../size_config.dart';
 import '../../login_success/login_success_screen.dart';
-import '../../services/auth_service.dart';
+import '../../../services/auth_service.dart';
 import 'sign_form.dart';
 
 class Body extends StatelessWidget {
@@ -49,14 +49,14 @@ class Body extends StatelessWidget {
                         }
                       },
                     ),
-                    SocalCard(
-                      icon: "assets/icons/facebook-2.svg",
-                      press: () {},
-                    ),
-                    SocalCard(
-                      icon: "assets/icons/twitter.svg",
-                      press: () {},
-                    ),
+                    //SocalCard(
+                      //icon: "assets/icons/facebook-2.svg",
+                     // press: () {},
+                    //),
+                    //SocalCard(
+                      //icon: "assets/icons/twitter.svg",
+                     // press: () {},
+                    //),
                   ],
                 ),
                 SizedBox(height: getProportionateScreenHeight(20)),

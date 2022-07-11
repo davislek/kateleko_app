@@ -4,7 +4,7 @@ import 'package:katale_ko_client/components/custom_surfix_icon.dart';
 import 'package:katale_ko_client/components/default_button.dart';
 import 'package:katale_ko_client/components/form_error.dart';
 import 'package:katale_ko_client/components/no_account_text.dart';
-import 'package:katale_ko_client/screens/services/auth_service.dart';
+import 'package:katale_ko_client/services/auth_service.dart';
 import 'package:katale_ko_client/size_config.dart';
 
 import '../../../constants.dart';

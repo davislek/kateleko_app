@@ -149,37 +149,37 @@ class _CompleteProfileFormState extends State<CompleteProfileForm> {
                 CollectionReference users = firestore.collection('users');
                 try
                 {
-                  //creating profile details
-                  await users.doc(email_key).collection("profile").add(
-                    {
-                      "Address": AddressFormController.text,
-                      "Phone": PhoneNumberController.text,
-                      "Last Name": LastNameController.text,
-                      "First Name": FirstNameController.text
-                    }
-                );
-                  //creating user cart
-                  await users.doc(email_key).collection("Cart").doc('data').set(
-                      {});
-
-                  //creating favourites
-                  await users.doc(email_key).collection("Favourites").doc('data').set(
-                      {});
-
-                  //creating Brands
-                  await users.doc(email_key).collection("Cart").doc('data').set(
-                      {});
-
-                  //creating popular products
-                  await users.doc(email_key).collection("PopularProducts").doc('data').set(
-                      {});
-
-                  //creating Phone brands
-                  await users.doc(email_key).collection("Brands").doc("SmartPhone").set(
-                      {});
-
-                  await users.doc(email_key).collection("Brands").doc("Fashion").set(
-                      {});
+                //   //creating profile details
+                //   await users.doc(email_key).collection("profile").add(
+                //     {
+                //       "Address": AddressFormController.text,
+                //       "Phone": PhoneNumberController.text,
+                //       "Last Name": LastNameController.text,
+                //       "First Name": FirstNameController.text
+                //     }
+                // );
+                //   //creating user cart
+                //   await users.doc(email_key).collection("Cart").doc('data').set(
+                //       {});
+                //
+                //   //creating favourites
+                //   await users.doc(email_key).collection("Favourites").doc('data').set(
+                //       {});
+                //
+                //   //creating Brands
+                //   await users.doc(email_key).collection("Cart").doc('data').set(
+                //       {});
+                //
+                //   //creating popular products
+                //   await users.doc(email_key).collection("PopularProducts").doc('data').set(
+                //       {});
+                //
+                //   //creating Phone brands
+                //   await users.doc(email_key).collection("Brands").doc("SmartPhone").set(
+                //       {});
+                //
+                //  // await users.doc(email_key).collection("Brands").doc("Fashion").set(
+                //       {});
 
                 }on FirebaseException
                 catch(e)
