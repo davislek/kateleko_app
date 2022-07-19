@@ -20,21 +20,61 @@ class FireStoreService {
 
       QuerySnapshot<Product> productDoc;
       if (ids != null && ids.isNotEmpty) {
-        productDoc = await ProductRef.where('id', whereIn: ids).get();
+        //productDoc = await ProductRef.where('id', whereIn: ids).get();
+        QuerySnapshot featureSnapShot =
+        await FirebaseFirestore.instance.collection("product").where('id', whereIn: ids).get();
+        String data = featureSnapShot.docs.toString();
+        Product CartData;
+        List<Product> CartList = [];
+        featureSnapShot.docs.forEach(
+                (element) {
+              String price = element['price'];
+              double  truePrice = double.parse(price);
+              CartData = Product(element["title"], truePrice,
+                  element["id"], element["description"],
+                  element["image"], element["category"]);
+              CartList.add(CartData);
+            }
+        );
+        return CartList;
       }
       else
       {
-        //assets
-        print("its this function");
-        productDoc = await ProductRef.get();
+        Product featureData;
+        List<Product> newList = [];
+        QuerySnapshot featureSnapShot =
+        await FirebaseFirestore.instance.collection("product").get();
+        String firedata = featureSnapShot.docs.toString();
+        //print("This is size snapshots $firedata");
+        featureSnapShot.docs.forEach(
+              (element) {
+                String price = element['price'];
+                double  truePrice = double.parse(price);
+                featureData = Product(element["title"], truePrice,
+                                   element["id"], element["description"],
+                                  element["image"], element["category"]);
+                newList.add(featureData);
+          }
+        );
+        return newList;
+        //print("The new list is this Reuben  >>>>>>>> $newList");
+        //List<Product> productList = [];
+        //productDoc = await ProductRef.get();
+        //QuerySnapshot featureSnapShot = (await FirebaseFirestore.instance) as QuerySnapshot<Object?>;
+        //for(int i=0; i< productDoc.size; i=i+1){
+        //  QuerySnapshot featureSnapShot = (await FirebaseFirestore.instance
+        //      .collection("products")
+        //      .doc(DatabaseIds[i])
+        //      .get()) as QuerySnapshot<Product?>;
+        //  print("Am snapshot number $i :::::::: $featureSnapShot");
+        //}
       }
-      return productDoc.docs.map((e) => e.data()).toList();
+      //return productDoc.docs.map((e) => e.data()).toList();
     } on FirebaseException catch (e, stacktrace) {
       log("Error getting the product", stackTrace: stacktrace, error: e);
     }
     return [];
   }
-
 
   //cart logic
   static addToCart(User? user, String productId) async {
@@ -71,6 +111,7 @@ Future<List<Cart>>? carts;
      for(var element in cartRef.docs) {
        productIds.add(element['id']);
      }
+     List data = await getProducts(productIds);
      List<Product> products  = await getProducts(productIds);
      for(var element in cartRef.docs){
        Product product = products.firstWhere((prod) => prod.id == element.id);

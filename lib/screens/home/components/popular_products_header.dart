@@ -23,16 +23,18 @@ class _PopularProductsHeaderState extends State<PopularProductsHeader> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-          children: [
-            Padding(
-              padding:
-                  EdgeInsets.symmetric(horizontal: getProportionateScreenWidth(20)),
-              child: SectionTitle(title: '$title', press: () {}),
-            ),
-            SizedBox(height: getProportionateScreenWidth(20)),
-            PopularProducts()
-          ],
-        );;
+    return SingleChildScrollView(
+      child: Column(
+            children: [
+              Padding(
+                padding:
+                    EdgeInsets.symmetric(horizontal: getProportionateScreenWidth(20)),
+                child: SectionTitle(title: '$title', press: () {}),
+              ),
+              SizedBox(height: getProportionateScreenWidth(20)),
+              PopularProducts()
+            ],
+          ),
+    );;
   }
 }

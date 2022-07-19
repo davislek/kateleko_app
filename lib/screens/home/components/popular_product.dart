@@ -27,18 +27,22 @@ class _PopularProductsState extends State<PopularProducts> {
     {
     if(snapshot.hasData && snapshot.data != null)
     {
-      return GridView.builder(
-          itemCount: snapshot.data?.length,
-          shrinkWrap: true,
-          padding: const EdgeInsets.all(5),
-          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2, mainAxisSpacing: 20, crossAxisSpacing: 20),
-          itemBuilder: (BuildContext context, int index)
-          {
-            return
-              ProductCard(
-                product: snapshot.data![index]
-              );
-          });
+      return SingleChildScrollView(
+        child: GridView.builder(
+            itemCount: snapshot.data?.length,
+            scrollDirection: Axis.vertical,
+            shrinkWrap: true,
+            physics: ScrollPhysics(),
+            padding: const EdgeInsets.all(2),
+            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2, mainAxisSpacing: 30, crossAxisSpacing: 10),
+            itemBuilder: (BuildContext context, int index)
+            {
+              return
+                ProductCard(
+                  product: snapshot.data![index]
+                );
+            }),
+      );
     }
     else
     {

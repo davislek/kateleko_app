@@ -51,7 +51,7 @@ class _BodyState extends State<Body> {
                 color: Color(0xFFF6F7F9),
                 child: Column(
                   children: [
-                    ColorDots(product: widget.product),
+                    //ColorDots(product: widget.product),
                     TopRoundedContainer(
                       color: Colors.white,
                       child: Padding(

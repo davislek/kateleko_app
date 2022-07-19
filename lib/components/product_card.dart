@@ -27,7 +27,7 @@ class ProductCard extends StatefulWidget {
 class _ProductCardState extends State<ProductCard> {
   void onAddToFavourites() async
   {
-    await FireStoreService.addToCart(Provider.of<ApplicationState>(context,
+    await FireStoreService.addToFavourites(Provider.of<ApplicationState>(context,
         listen: false).user, widget.product.id.toString());
     ScaffoldMessenger.of(context).showSnackBar(SnackBar(
       content: Text("Added to favourites"),
@@ -37,6 +37,7 @@ class _ProductCardState extends State<ProductCard> {
 
   @override
   Widget build(BuildContext context) {
+    bool selected = false;
     return Padding(
       padding: EdgeInsets.only(left: getProportionateScreenWidth(20)),
       child: SizedBox(
@@ -50,17 +51,19 @@ class _ProductCardState extends State<ProductCard> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              AspectRatio(
-                aspectRatio: 1.02,
-                child: Container(
-                  padding: EdgeInsets.all(getProportionateScreenWidth(20)),
-                  decoration: BoxDecoration(
-                    color: kSecondaryColor.withOpacity(0.1),
-                    borderRadius: BorderRadius.circular(15),
-                  ),
-                  child: Hero(
-                    tag: widget.product.id.toString(),
-                    child: Image.asset(widget.product.images),
+              Expanded(
+                child: AspectRatio(
+                  aspectRatio: .9,
+                  child: Container(
+                    padding: EdgeInsets.all(getProportionateScreenWidth(20)),
+                    decoration: BoxDecoration(
+                      color: kSecondaryColor.withOpacity(0.1),
+                      borderRadius: BorderRadius.circular(15),
+                    ),
+                    child: Hero(
+                      tag: widget.product.id.toString(),
+                      child: Expanded(child: Image(image: NetworkImage(widget.product.images),))//Image.asset(widget.product.images)),
+                    ),
                   ),
                 ),
               ),
@@ -71,14 +74,17 @@ class _ProductCardState extends State<ProductCard> {
                 maxLines: 2,
               ),
               Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  Text(
-                    "\$${widget.product.price}",
-                    style: TextStyle(
-                      fontSize: getProportionateScreenWidth(18),
-                      fontWeight: FontWeight.w600,
-                      color: kPrimaryColor,
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text(
+                      "\$${widget.product.price}",
+                      style: TextStyle(
+                        fontSize: getProportionateScreenWidth(18),
+                        fontWeight: FontWeight.w600,
+                        color: kPrimaryColor,
+                      ),
                     ),
                   ),
                   InkWell(
@@ -98,13 +104,16 @@ class _ProductCardState extends State<ProductCard> {
                       child: GestureDetector(
                         onTap: (){
                           onAddToFavourites();
+                          setState((){
+                              selected = true;
+                          });
                         },
                         child: SvgPicture.asset(
                           "assets/icons/Heart Icon_2.svg",
-                          color:Color(0xFFDBDEE4)
-                          //product.isFavourite
-                           //   ? Color(0xFFFF4848)
-                            //  : Color(0xFFDBDEE4),
+                          color:
+                          selected
+                              ? Colors.red
+                              : Color(0xFFDBDEE4),
                         ),
                       ),
                     ),

@@ -16,7 +16,8 @@ class ApplicationState extends ChangeNotifier {
       if(userFir != null){
         loginState = ApplicationLoginState.loggedIn;
         user = userFir;
-      }else
+      }
+      else
       {
         loginState = ApplicationLoginState.loggedOut;
       }

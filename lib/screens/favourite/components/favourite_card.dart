@@ -25,7 +25,7 @@ class FavouriteCard extends StatelessWidget {
                 color: Color(0xFFF5F6F9),
                 borderRadius: BorderRadius.circular(15),
               ),
-              child: Image.asset(favourite.images),
+              child: Image(image:NetworkImage(favourite.images))//Image.asset(favourite.images),
             ),
           ),
         ),

@@ -40,7 +40,7 @@ class _BodyState extends State<Body> {
                   Padding(
                     padding: EdgeInsets.symmetric(vertical: 10),
                     child: Dismissible(
-                      key: Key(snapshot.data![index].id),
+                      key:UniqueKey()// Key(snapshot.data![index].id),
                       direction: DismissDirection.endToStart,
                       onDismissed: (direction) {
                         setState(() {});

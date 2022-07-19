@@ -28,17 +28,20 @@ class _ProductImagesState extends State<ProductImages> {
             aspectRatio: 1,
             child: Hero(
               tag: widget.product.id.toString(),
-              child: Image.asset(widget.product.images),
+              child: Image(image:NetworkImage(widget.product.images))//Image.asset(widget.product.images),
             ),
           ),
         ),
         // SizedBox(height: getProportionateScreenWidth(20)),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            ...List.generate(widget.product.images.length,
-                (index) => buildSmallProductPreview(index)),
-          ],
+        SingleChildScrollView(
+          scrollDirection: Axis.horizontal,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              ...List.generate(3,
+                  (index) => buildSmallProductPreview(index)),
+            ],
+          ),
         )
       ],
     );
@@ -63,7 +66,7 @@ class _ProductImagesState extends State<ProductImages> {
           border: Border.all(
               color: kPrimaryColor.withOpacity(selectedImage == index ? 1 : 0)),
         ),
-        child: Image.asset(widget.product.images[index]),
+        child: Image(image:NetworkImage(widget.product.images))//Image.asset(widget.product.images[index]),
       ),
     );
   }
